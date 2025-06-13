@@ -1,7 +1,7 @@
 import sys, re, os
 import pytest
-import cffi
-from cffi import cffi_opcode
+import cffi_ft as cffi
+from cffi_ft import cffi_opcode
 from pathlib import Path
 
 if '__pypy__' in sys.builtin_module_names:
@@ -12,7 +12,7 @@ if '__pypy__' in sys.builtin_module_names:
         # older pytest
         pytest.skip("not available on pypy")
 
-cffi_dir = str(Path(os.path.dirname(__file__)).parent.parent / "src/cffi")
+cffi_dir = str(Path(os.path.dirname(__file__)).parent.parent / "src/cffi_ft")
 
 r_macro = re.compile(r"#define \w+[(][^\n]*|#include [^\n]*")
 r_define = re.compile(r"(#define \w+) [^\n]*")
@@ -333,7 +333,7 @@ def test_identifier():
                                                         '->', Pointer(0)]
 
 def test_cffi_opcode_sync():
-    import cffi.model
+    import cffi_ft.model
     for name in dir(lib):
         if name.startswith('_CFFI_'):
             assert getattr(cffi_opcode, name[6:]) == getattr(lib, name)

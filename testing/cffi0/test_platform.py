@@ -1,5 +1,5 @@
 import os
-from cffi.ffiplatform import maybe_relative_path, flatten
+from cffi_ft.ffiplatform import maybe_relative_path, flatten
 
 
 def test_not_absolute():

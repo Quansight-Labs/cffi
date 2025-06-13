@@ -23,9 +23,9 @@ def main() -> None:
         ('setup.py', re.compile(r"^( +version=')[^']*(',)$", flags=re.MULTILINE), version),
         ('src/c/_cffi_backend.c', re.compile(r'^(#define CFFI_VERSION +")[^"]*(")$', flags=re.MULTILINE), version),
         ('src/c/test_c.py', re.compile(r'^(assert __version__ == ")[^"]*(", .*)$', flags=re.MULTILINE), version),
-        ('src/cffi/__init__.py', re.compile(r'^(__version__ = ")[^"]*(")$', flags=re.MULTILINE), version),
-        ('src/cffi/__init__.py', re.compile(r'^(__version_info__ = \()[^)]*(\))$', flags=re.MULTILINE), version_info),
-        ('src/cffi/_embedding.h', re.compile(r'^( +"\\ncompiled with cffi version: )[^"]*(")$', flags=re.MULTILINE), version),
+        ('src/cffi_ft/__init__.py', re.compile(r'^(__version__ = ")[^"]*(")$', flags=re.MULTILINE), version),
+        ('src/cffi_ft/__init__.py', re.compile(r'^(__version_info__ = \()[^)]*(\))$', flags=re.MULTILINE), version_info),
+        ('src/cffi_ft/_embedding.h', re.compile(r'^( +"\\ncompiled with cffi version: )[^"]*(")$', flags=re.MULTILINE), version),
     ]
 
     repo_root = pathlib.Path(__file__).parent.parent

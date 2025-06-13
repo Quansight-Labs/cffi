@@ -1,9 +1,9 @@
 
 class FFIError(Exception):
-    __module__ = 'cffi'
+    __module__ = 'cffi_fi'
 
 class CDefError(Exception):
-    __module__ = 'cffi'
+    __module__ = 'cffi_fi'
     def __str__(self):
         try:
             current_decl = self.args[1]
@@ -17,15 +17,15 @@ class CDefError(Exception):
 class VerificationError(Exception):
     """ An error raised when verification fails
     """
-    __module__ = 'cffi'
+    __module__ = 'cffi_ft'
 
 class VerificationMissing(Exception):
     """ An error raised when incomplete structures are passed into
     cdef, but no verification has been done
     """
-    __module__ = 'cffi'
+    __module__ = 'cffi_ft'
 
 class PkgConfigError(Exception):
     """ An error raised for missing modules in pkg-config
     """
-    __module__ = 'cffi'
+    __module__ = 'cffi_ft'

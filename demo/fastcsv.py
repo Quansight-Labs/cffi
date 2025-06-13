@@ -1,6 +1,6 @@
 from __future__ import print_function
 import csv
-import cffi
+import cffi_ft as cffi
 
 # IN-PROGRESS.  See the demo at the end of the file
 

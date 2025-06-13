@@ -177,10 +177,10 @@ if __name__ == '__main__':
     cpython = ('_cffi_ft_backend' not in sys.builtin_module_names)
 
     setup(
-        packages=['cffi'] if cpython else [],
+        packages=['cffi_ft'] if cpython else [],
         package_dir={"": "src"},
-        package_data={'cffi': ['_cffi_include.h', 'parse_c_type.h', 
-                               '_embedding.h', '_cffi_errors.h']}
+        package_data={'cffi_ft': ['_cffi_include.h', 'parse_c_type.h', 
+                                  '_embedding.h', '_cffi_errors.h']}
                      if cpython else {},
         zip_safe=False,
 

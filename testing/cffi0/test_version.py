@@ -1,6 +1,6 @@
 import os, sys
 import pytest
-import cffi, _cffi_ft_backend as _cffi_backend
+import cffi_ft as cffi, _cffi_ft_backend as _cffi_backend
 from pathlib import Path
 
 def setup_module(mod):
@@ -57,6 +57,6 @@ def test_c_version():
 def test_embedding_h():
     cffi_root = Path(os.path.dirname(__file__)).parent.parent
     v = cffi.__version__
-    p = cffi_root / 'src/cffi/_embedding.h'
+    p = cffi_root / 'src/cffi_ft/_embedding.h'
     content = _read(p)
     assert ('cffi version: %s"' % (v,)) in content

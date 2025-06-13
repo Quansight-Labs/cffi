@@ -10,7 +10,7 @@ import fcntl
 import os
 import sys
 
-import cffi
+import cffi_ft as cffi
 
 ffi = cffi.FFI()
 

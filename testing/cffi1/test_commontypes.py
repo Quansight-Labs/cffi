@@ -1,4 +1,4 @@
-import os, cffi, re
+import os, cffi_ft as cffi, re
 import pytest
 import _cffi_ft_backend as _cffi_backend
 

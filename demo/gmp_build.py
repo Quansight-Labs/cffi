@@ -1,4 +1,4 @@
-import cffi
+import cffi_ft as cffi
 
 #
 # This is only a demo based on the GMP library.

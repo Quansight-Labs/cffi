@@ -94,7 +94,7 @@ here this slightly expanded example:
 .. code-block:: python
 
     # file plugin_build.py
-    import cffi
+    import cffi_ft as cffi
     ffibuilder = cffi.FFI()
 
     with open('plugin.h') as f:

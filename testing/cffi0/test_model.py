@@ -1,4 +1,4 @@
-from cffi.model import *
+from cffi_ft.model import *
 
 
 def test_void_type():

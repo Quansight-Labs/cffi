@@ -1,7 +1,7 @@
 import pytest
 import platform
 import sys, ctypes, ctypes.util
-from cffi import FFI, CDefError, FFIError, VerificationMissing
+from cffi_ft import FFI, CDefError, FFIError, VerificationMissing
 from testing.support import *
 
 SIZE_OF_INT   = ctypes.sizeof(ctypes.c_int)

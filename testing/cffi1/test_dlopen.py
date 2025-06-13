@@ -1,6 +1,6 @@
 import pytest
-from cffi import FFI, VerificationError, CDefError
-from cffi.recompiler import make_py_source
+from cffi_ft import FFI, VerificationError, CDefError
+from cffi_ft.recompiler import make_py_source
 from testing.udir import udir
 
 pytestmark = [

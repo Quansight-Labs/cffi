@@ -1,7 +1,7 @@
 import re
 import pytest
 import sys, os, math, weakref
-from cffi import FFI, VerificationError, VerificationMissing, model, FFIError
+from cffi_ft import FFI, VerificationError, VerificationMissing, model, FFIError
 from testing.support import *
 from testing.support import extra_compile_args, is_musl
 
@@ -26,8 +26,8 @@ else:
                 *args, extra_compile_args=extra_compile_args, **kwds)
 
 def setup_module():
-    import cffi.verifier
-    cffi.verifier.cleanup_tmpdir()
+    import cffi_ft.verifier as verifier
+    verifier.cleanup_tmpdir()
     #
     # check that no $ sign is produced in the C file; it used to be the
     # case that anonymous enums would produce '$enum_$1', which was
@@ -44,19 +44,19 @@ def setup_module():
             data = _r_comment.sub(' ', data)
             data = _r_string.sub('"skipped"', data)
             assert '$' not in data
-    base_write_source = cffi.verifier.Verifier._write_source
-    cffi.verifier.Verifier._write_source = _write_source_and_check
+    base_write_source = verifier.Verifier._write_source
+    verifier.Verifier._write_source = _write_source_and_check
 
 
 def test_module_type():
-    import cffi.verifier
+    import cffi_ft.verifier as verifier
     ffi = FFI()
     lib = ffi.verify()
     if hasattr(lib, '_cffi_python_module'):
         print('verify got a PYTHON module')
     if hasattr(lib, '_cffi_generic_module'):
         print('verify got a GENERIC module')
-    expected_generic = (cffi.verifier._FORCE_GENERIC_ENGINE or
+    expected_generic = (verifier._FORCE_GENERIC_ENGINE or
                         '__pypy__' in sys.builtin_module_names)
     assert hasattr(lib, '_cffi_python_module') == (not expected_generic)
     assert hasattr(lib, '_cffi_generic_module') == expected_generic
@@ -79,7 +79,7 @@ def test_missing_function(ffi=None):
 
 def test_missing_function_import_error():
     # uses the original FFI that just gives a warning during compilation
-    import cffi
+    import cffi_ft as cffi
     test_missing_function(ffi=cffi.FFI())
 
 def test_simple_case():
@@ -953,7 +953,7 @@ def test_access_callback_function_typedef():
     assert lib.foo(4) == 887
 
 def test_ctypes_backend_forces_generic_engine():
-    from cffi.backend_ctypes import CTypesBackend
+    from cffi_ft.backend_ctypes import CTypesBackend
     ffi = FFI(backend=CTypesBackend())
     ffi.cdef("int func(int a);")
     lib = ffi.verify("int func(int a) { return a * 42; }")
@@ -1601,10 +1601,10 @@ def test_callback_in_thread():
     if sys.platform == 'win32':
         pytest.skip("pthread only")
     import os, subprocess
-    from cffi import _imp_emulation as imp
+    from cffi_ft import _imp_emulation as imp
     arg = os.path.join(os.path.dirname(__file__), 'callback_in_thread.py')
     g = subprocess.Popen([sys.executable, arg,
-                          os.path.dirname(imp.find_module('cffi')[1])])
+                          os.path.dirname(imp.find_module('cffi_ft')[1])])
     result = g.wait()
     assert result == 0
 
@@ -1967,7 +1967,7 @@ def test_bug_const_char_ptr_array_1():
     assert repr(ffi.typeof(lib.a)) == "<ctype 'char *[5]'>"
 
 def test_bug_const_char_ptr_array_2():
-    from cffi import FFI     # ignore warnings
+    from cffi_ft import FFI     # ignore warnings
     ffi = FFI()
     ffi.cdef("""extern const int a[];""")
     lib = ffi.verify("""const int a[5];""")

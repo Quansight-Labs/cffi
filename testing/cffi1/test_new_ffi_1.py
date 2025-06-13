@@ -1,11 +1,11 @@
 import pytest
 import platform
 import sys, os, ctypes
-import cffi
+import cffi_ft as cffi
 from testing.udir import udir
 from testing.support import *
-from cffi.recompiler import recompile, NativeIO
-from cffi.cffi_opcode import PRIMITIVE_TO_INDEX
+from cffi_ft.recompiler import recompile, NativeIO
+from cffi_ft.cffi_opcode import PRIMITIVE_TO_INDEX
 
 SIZE_OF_INT   = ctypes.sizeof(ctypes.c_int)
 SIZE_OF_LONG  = ctypes.sizeof(ctypes.c_long)

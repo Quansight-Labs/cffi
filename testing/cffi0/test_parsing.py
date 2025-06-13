@@ -1,6 +1,6 @@
 import sys, re
 import pytest
-from cffi import FFI, FFIError, CDefError, VerificationError
+from cffi_ft import FFI, FFIError, CDefError, VerificationError
 from .backend_tests import needs_dlopen_none
 from testing.support import is_musl
 
@@ -444,7 +444,7 @@ def test__is_constant_globalvar():
         assert len(log) == (1 - expected_output)
 
 def test_restrict():
-    from cffi import model
+    from cffi_ft import model
     for input, expected_output in [
         ("int a;",             False),
         ("restrict int a;",    True),
@@ -469,7 +469,7 @@ def test_different_const_funcptr_types():
     assert lst[1] == lst[3]
 
 def test_const_pointer_to_pointer():
-    from cffi import model
+    from cffi_ft import model
     ffi = FFI(backend=FakeBackend())
     #
     tp, qual = ffi._parser.parse_type_and_quals("char * * (* const)")

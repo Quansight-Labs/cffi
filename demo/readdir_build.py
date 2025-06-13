@@ -1,5 +1,5 @@
 import sys
-from cffi import FFI
+from cffi_ft import FFI
 
 if not sys.platform.startswith('linux'):
     raise Exception("Linux-only demo")

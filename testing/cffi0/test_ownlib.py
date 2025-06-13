@@ -1,8 +1,8 @@
 import sys, os
 import subprocess, weakref
 import pytest
-from cffi import FFI
-from cffi.backend_ctypes import CTypesBackend
+from cffi_ft import FFI
+from cffi_ft.backend_ctypes import CTypesBackend
 from testing.support import u, is_musl
 
 

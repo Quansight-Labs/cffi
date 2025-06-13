@@ -1,7 +1,7 @@
 import sys, os
 import pytest
-from cffi import FFI
-from cffi import recompiler, ffiplatform, VerificationMissing
+from cffi_ft import FFI
+from cffi_ft import recompiler, ffiplatform, VerificationMissing
 from testing.udir import udir
 from testing.support import u, is_musl
 

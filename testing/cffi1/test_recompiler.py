@@ -1,8 +1,8 @@
 
 import sys, os
 import pytest
-from cffi import FFI, VerificationError, FFIError, CDefError
-from cffi import recompiler
+from cffi_ft import FFI, VerificationError, FFIError, CDefError
+from cffi_ft import recompiler
 from testing.udir import udir
 from testing.support import u, long
 from testing.support import FdWriteCapture, StdErrCapture, _verify

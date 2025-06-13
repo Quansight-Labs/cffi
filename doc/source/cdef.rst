@@ -11,7 +11,7 @@ In order of complexity:
 
   .. code-block:: python
 
-    import cffi
+    import cffi_ft as cffi
 
     ffi = cffi.FFI()
     ffi.cdef("C-like declarations")
@@ -27,7 +27,7 @@ In order of complexity:
   .. code-block:: python
 
     # in a separate file "package/foo_build.py"
-    import cffi
+    import cffi_ft as cffi
 
     ffibuilder = cffi.FFI()
     ffibuilder.set_source("package._foo", None)
@@ -55,7 +55,7 @@ In order of complexity:
   .. code-block:: python
 
     # in a separate file "package/foo_build.py"
-    import cffi
+    import cffi_ft as cffi
 
     ffibuilder = cffi.FFI()
     ffibuilder.set_source("package._foo", r"""real C code""")   # <=
@@ -105,9 +105,9 @@ In order of complexity:
 
     setup(
         ...,
-        setup_requires=["cffi>=1.0.0"],
-        cffi_modules=["package/foo_build.py:ffibuilder"],
-        install_requires=["cffi>=1.0.0"],
+        setup_requires=["cffi_ft>=1.0.0"],
+        cffi_ft_modules=["package/foo_build.py:ffibuilder"],
+        install_requires=["cffi_ft>=1.0.0"],
     )
 
   Note again that the ``foo_build.py`` example contains the following
@@ -133,7 +133,7 @@ Note that CFFI actually contains two different ``FFI`` classes.  The
 page `Using the ffi/lib objects`_ describes the common functionality.
 It is what you get in the ``from package._foo import ffi`` lines above.
 On the other hand, the extended ``FFI`` class is the one you get from
-``import cffi; ffi_or_ffibuilder = cffi.FFI()``.  It has the same
+``import cffi_ft as cffi; ffi_or_ffibuilder = cffi.FFI()``.  It has the same
 functionality (for in-line use), but also the extra methods described
 below (to prepare the FFI).  NOTE: We use the name ``ffibuilder``
 instead of ``ffi`` in the out-of-line context, when the code is about
@@ -694,11 +694,11 @@ if needed in the given ``tmpdir``, and returns a
 ``distutils.core.Extension`` instance.
 
 For Setuptools, you use instead the line
-``cffi_modules=["path/to/foo_build.py:ffibuilder"]`` in ``setup.py``.  This
+``cffi_ft_modules=["path/to/foo_build.py:ffibuilder"]`` in ``setup.py``.  This
 line asks Setuptools to import and use a helper provided by CFFI,
 which in turn executes the file ``path/to/foo_build.py`` (as with
 ``execfile()``) and looks up its global variable called ``ffibuilder``.  You
-can also say ``cffi_modules=["path/to/foo_build.py:maker"]``, where
+can also say ``cffi_ft_modules=["path/to/foo_build.py:maker"]``, where
 ``maker`` names a global function; it is called with no argument and
 is supposed to return a ``FFI`` object.
 
@@ -907,12 +907,12 @@ new module file name, based on two CRC32 hashes computed from these
 strings.  This creates more and more files in the ``__pycache__``
 directory.  It is recommended that you clean it up from time to time.
 A nice way to do that is to add, in your test suite, a call to
-``cffi.verifier.cleanup_tmpdir()``.  Alternatively, you can manually
+``cffi_ft.verifier.cleanup_tmpdir()``.  Alternatively, you can manually
 remove the whole ``__pycache__`` directory.
 
 An alternative cache directory can be given as the ``tmpdir`` argument
 to ``verify()``, via the environment variable ``CFFI_TMPDIR``, or by
-calling ``cffi.verifier.set_tmpdir(path)`` prior to calling
+calling ``cffi_ft.verifier.set_tmpdir(path)`` prior to calling
 ``verify``.
 
 
@@ -927,7 +927,7 @@ steps.
 
 .. code-block:: python
 
-    import cffi
+    import cffi_ft as cffi
 
     ffi = cffi.FFI()
     ffi.cdef("stuff")
@@ -945,7 +945,7 @@ above.  Optionally, see also the `setuptools integration`__ paragraph.
 
 .. code-block:: python
 
-    import cffi
+    import cffi_ft as cffi
 
     ffi = cffi.FFI()
     ffi.cdef("stuff")
@@ -969,7 +969,7 @@ versions of PyPy (CFFI 1.0 does not work in PyPy < 2.6):
 .. code-block:: python
 
     # in a separate file "package/foo_build.py"
-    import cffi
+    import cffi_ft as cffi
 
     ffi = cffi.FFI()
     C_HEADER_SRC = r'''
@@ -1027,7 +1027,7 @@ Then we use the ``requires_cffi`` variable to give different arguments to
     else:
         extra_args = dict(
             setup_requires=[requires_cffi],
-            cffi_modules=['package/foo_build.py:ffi'],
+            cffi_ft_modules=['package/foo_build.py:ffi'],
         )
     setup(
         name=...,

@@ -401,7 +401,7 @@ v1.11
 * Fixed a rare race condition when creating multiple ``FFI`` instances
   from multiple threads.  (Note that you aren't meant to create many
   ``FFI`` instances: in inline mode, you should write ``ffi =
-  cffi.FFI()`` at module level just after ``import cffi``; and in
+  cffi.FFI()`` at module level just after ``import cffi_ft as cffi``; and in
   out-of-line mode you don't instantiate ``FFI`` explicitly at all.)
 
 * Windows: using callbacks can be messy because the CFFI internal error

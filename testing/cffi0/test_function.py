@@ -1,8 +1,8 @@
 import pytest
-from cffi import FFI, CDefError
+from cffi_ft import FFI, CDefError
 import math, os, sys
 import ctypes.util
-from cffi.backend_ctypes import CTypesBackend
+from cffi_ft.backend_ctypes import CTypesBackend
 from testing.udir import udir
 from testing.support import FdWriteCapture, StdErrCapture, is_musl
 from .backend_tests import needs_dlopen_none

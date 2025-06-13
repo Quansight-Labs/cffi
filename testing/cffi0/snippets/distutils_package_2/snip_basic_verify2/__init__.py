@@ -1,5 +1,5 @@
 
-from cffi import FFI
+from cffi_ft import FFI
 import sys
 
 ffi = FFI()

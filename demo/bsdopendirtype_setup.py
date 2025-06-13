@@ -4,10 +4,10 @@ setup(
     name="example",
     version="0.1",
     py_modules=["bsdopendirtype"],
-    setup_requires=["cffi>=1.0.dev0"],
-    cffi_modules=[
+    setup_requires=["cffi_ft>=1.0.dev0"],
+    cffi_ft_modules=[
         "bsdopendirtype_build.py:ffibuilder",
     ],
-    install_requires=["cffi>=1.0.dev0"],   # should maybe be "cffi-backend" only?
+    install_requires=["cffi_ft>=1.0.dev0"],   # should maybe be "cffi-backend" only?
     zip_safe=False,
 )

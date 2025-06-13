@@ -1,5 +1,5 @@
 from __future__ import print_function
-import cffi
+import cffi_ft as cffi
 
 ffi = cffi.FFI()
 

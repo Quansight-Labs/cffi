@@ -440,7 +440,7 @@ typedef struct {
 # include "wchar_helper.h"
 #endif
 
-#include "../cffi/_cffi_errors.h"
+#include "../cffi_ft/_cffi_errors.h"
 
 typedef struct _cffi_allocator_s {
     PyObject *ca_alloc, *ca_free;

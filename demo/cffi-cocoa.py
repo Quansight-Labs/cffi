@@ -2,7 +2,7 @@
 # by Juraj Sukop.  This demo was eventually expanded into a more complete
 # Cocoa library available at https://bitbucket.org/sukop/nspython .
 
-from cffi import FFI
+from cffi_ft import FFI
 
 ffi = FFI()
 ffi.cdef('''

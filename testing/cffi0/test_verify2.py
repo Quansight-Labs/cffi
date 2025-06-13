@@ -12,5 +12,5 @@ pytestmark = [
 # tests should run much faster than test_verify.
 
 def setup_module():
-    import cffi.verifier
-    cffi.verifier.cleanup_tmpdir(keep_so=True)
+    import cffi_ft.verifier as verifier
+    verifier.cleanup_tmpdir(keep_so=True)

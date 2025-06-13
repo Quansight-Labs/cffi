@@ -1,7 +1,7 @@
 import sys, os
 import pytest
 import subprocess
-import cffi
+import cffi_ft as cffi
 from testing.udir import udir
 from shutil import rmtree
 from tempfile import mkdtemp
@@ -294,7 +294,7 @@ class TestDist(object):
             f.write("""if 1:
                 # https://bugs.python.org/issue23246
                 import setuptools
-                import cffi
+                import cffi_ft as cffi
                 ffi = cffi.FFI()
                 ffi.set_source("pack1.mymod", "/*code would be here*/")
 
@@ -331,7 +331,7 @@ class TestDist(object):
             pass
         with open(os.path.join("src0", "pack2", "_build.py"), "w") as f:
             f.write("""if 1:
-                import cffi
+                import cffi_ft as cffi
                 ffi = cffi.FFI()
                 ffi.set_source("pack2.mymod", None)
             """)
@@ -342,7 +342,7 @@ class TestDist(object):
                       version='0.1',
                       packages=['pack2'],
                       package_dir={'': 'src0'},
-                      cffi_modules=["src0/pack2/_build.py:ffi"])
+                      cffi_ft_modules=["src0/pack2/_build.py:ffi"])
             """)
 
     @chdir_to_tmp
@@ -371,7 +371,7 @@ class TestDist(object):
             pass
         with open(os.path.join("src1", "pack3", "_build.py"), "w") as f:
             f.write("""if 1:
-                import cffi
+                import cffi_ft as cffi
                 ffi = cffi.FFI()
                 ffi.set_source("pack3.mymod", "/*code would be here*/")
                 ffi._hi_there = 42
@@ -397,7 +397,7 @@ class TestDist(object):
                       version='0.1',
                       packages=['pack3'],
                       package_dir={'': 'src1'},
-                      cffi_modules=["src1/pack3/_build.py:ffi"],
+                      cffi_ft_modules=["src1/pack3/_build.py:ffi"],
                       cmdclass={'build_ext': TestBuildExt},
                       )
             """)

@@ -10,7 +10,7 @@ if __name__ == '__main__':
     from distutils.extension import Extension
 
     standard = '__pypy__' not in sys.builtin_module_names
-    setup(packages=['cffi'],
+    setup(packages=['cffi_ft'],
           requires=['pycparser'],
           ext_modules=[Extension(name = '_cffi_ft_backend',
                                  include_dirs=include_dirs,

@@ -1,4 +1,4 @@
-import cffi
+import cffi_ft as cffi
 
 ffibuilder = cffi.FFI()
 

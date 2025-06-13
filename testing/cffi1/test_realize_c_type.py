@@ -1,6 +1,6 @@
 import sys
 import pytest
-from cffi import cffi_opcode
+from cffi_ft import cffi_opcode
 
 
 def check(input, expected_output=None, expected_ffi_error=False):

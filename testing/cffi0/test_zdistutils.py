@@ -1,8 +1,8 @@
 import sys, os, math, shutil
 import pytest
-from cffi import FFI, FFIError
-from cffi.verifier import Verifier, _locate_engine_class, _get_so_suffixes
-from cffi.ffiplatform import maybe_relative_path
+from cffi_ft import FFI, FFIError
+from cffi_ft.verifier import Verifier, _locate_engine_class, _get_so_suffixes
+from cffi_ft.ffiplatform import maybe_relative_path
 from testing.udir import udir
 from testing.support import load_dynamic
 
@@ -242,7 +242,7 @@ class DistUtilsTest(object):
         if not (os.WIFEXITED(status) and os.WEXITSTATUS(status) == 0):
             raise AssertionError   # see error above in subprocess
 
-        from cffi import ffiplatform
+        from cffi_ft import ffiplatform
         prev_compile = ffiplatform.compile
         try:
             if targetpackage == ext_package:

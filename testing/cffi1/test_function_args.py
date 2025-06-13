@@ -14,7 +14,7 @@ except ImportError as e:
         pytest.skip(str(e1))
 else:
 
-    from cffi import FFI
+    from cffi_ft import FFI
     import sys, random
     from .test_recompiler import verify
 

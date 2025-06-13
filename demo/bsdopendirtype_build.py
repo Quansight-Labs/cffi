@@ -1,4 +1,4 @@
-from cffi import FFI
+from cffi_ft import FFI
 
 ffibuilder = FFI()
 ffibuilder.cdef("""

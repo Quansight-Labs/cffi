@@ -3,7 +3,7 @@ if sys.platform == 'win32':
     #This module does not exist in windows
     raise ImportError('No module named _curses')
 
-from cffi import FFI
+from cffi_ft import FFI
 
 ffi = FFI()
 

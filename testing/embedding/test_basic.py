@@ -2,7 +2,7 @@ import sys, os, re
 import shutil, subprocess, time
 import pytest
 from testing.udir import udir
-import cffi
+import cffi_ft as cffi
 
 
 local_dir = os.path.dirname(os.path.abspath(__file__))

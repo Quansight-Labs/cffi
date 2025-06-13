@@ -1,4 +1,4 @@
-from cffi import FFI
+from cffi_ft import FFI
 ffi = FFI()
 ffi.cdef("""     // some declarations from the man page
     struct passwd {

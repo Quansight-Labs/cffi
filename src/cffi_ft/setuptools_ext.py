@@ -9,7 +9,7 @@ except NameError:
     basestring = str
 
 def error(msg):
-    from cffi._shimmed_dist_utils import DistutilsSetupError
+    from cffi_ft._shimmed_dist_utils import DistutilsSetupError
     raise DistutilsSetupError(msg)
 
 
@@ -27,10 +27,10 @@ def execfile(filename, glob):
 
 
 def add_cffi_module(dist, mod_spec):
-    from cffi.api import FFI
+    from cffi_ft.api import FFI
 
     if not isinstance(mod_spec, basestring):
-        error("argument to 'cffi_modules=...' must be a str or a list of str,"
+        error("argument to 'cffi_ft_modules=...' must be a str or a list of str,"
               " not %r" % (type(mod_spec).__name__,))
     mod_spec = str(mod_spec)
     try:
@@ -42,7 +42,7 @@ def add_cffi_module(dist, mod_spec):
         ext = ''
         rewritten = build_file_name.replace('.', '/') + '.py'
         if os.path.exists(rewritten):
-            ext = ' (rewrite cffi_modules to [%r])' % (
+            ext = ' (rewrite cffi_ft_modules to [%r])' % (
                 rewritten + ':' + ffi_var_name,)
         error("%r does not name an existing file%s" % (build_file_name, ext))
 
@@ -88,8 +88,8 @@ def _set_py_limited_api(Extension, kwds):
     Recently (2020) we started shipping only >= 3.5 wheels, though.  So
     we'll give it another try and set py_limited_api on Windows >= 3.5.
     """
-    from cffi._shimmed_dist_utils import log
-    from cffi import recompiler
+    from cffi_ft._shimmed_dist_utils import log
+    from cffi_ft import recompiler
 
     if ('py_limited_api' not in kwds and not hasattr(sys, 'gettotalrefcount')
             and recompiler.USE_LIMITED_API):
@@ -119,8 +119,8 @@ def _set_py_limited_api(Extension, kwds):
 def _add_c_module(dist, ffi, module_name, source, source_extension, kwds):
     # We are a setuptools extension. Need this build_ext for py_limited_api.
     from setuptools.command.build_ext import build_ext
-    from cffi._shimmed_dist_utils import Extension, log, mkpath
-    from cffi import recompiler
+    from cffi_ft._shimmed_dist_utils import Extension, log, mkpath
+    from cffi_ft import recompiler
 
     allsources = ['$PLACEHOLDER']
     allsources.extend(kwds.pop('sources', []))
@@ -163,8 +163,8 @@ def _add_c_module(dist, ffi, module_name, source, source_extension, kwds):
 def _add_py_module(dist, ffi, module_name):
     from setuptools.command.build_py import build_py
     from setuptools.command.build_ext import build_ext
-    from cffi._shimmed_dist_utils import log, mkpath
-    from cffi import recompiler
+    from cffi_ft._shimmed_dist_utils import log, mkpath
+    from cffi_ft import recompiler
 
     def generate_mod(py_file):
         log.info("generating cffi module %r" % py_file)
@@ -220,8 +220,8 @@ def _add_py_module(dist, ffi, module_name):
                 generate_mod(os.path.join(package_dir, file_name))
     dist.cmdclass['build_ext'] = build_ext_make_mod
 
-def cffi_modules(dist, attr, value):
-    assert attr == 'cffi_modules'
+def cffi_ft_modules(dist, attr, value):
+    assert attr == 'cffi_ft_modules'
     if isinstance(value, basestring):
         value = [value]
 

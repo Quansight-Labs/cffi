@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 #
 #
 import sys, math
-from cffi import FFI
+from cffi_ft import FFI
 from testing.support import is_musl
 import pytest
 

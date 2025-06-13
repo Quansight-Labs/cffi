@@ -310,7 +310,7 @@ Imagine we have something like this:
 
 .. code-block:: python
 
-   from cffi import FFI
+   from cffi_ft import FFI
    ffi = FFI()
    ffi.cdef("""
       int main_like(int argv, char *argv[]);
@@ -957,7 +957,7 @@ arguments are passed:
 
     # file "example_build.py"
 
-    import cffi
+    import cffi_ft as cffi
 
     ffibuilder = cffi.FFI()
     ffibuilder.cdef("""

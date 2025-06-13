@@ -1,5 +1,5 @@
-import cffi
-from cffi import FFI
+import cffi_ft as cffi
+from cffi_ft import FFI
 
 class PythonFFI(FFI):
 

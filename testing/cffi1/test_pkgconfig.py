@@ -1,8 +1,8 @@
 import sys
 import subprocess
 import pytest
-import cffi.pkgconfig as pkgconfig
-from cffi import PkgConfigError
+import cffi_ft.pkgconfig as pkgconfig
+from cffi_ft import PkgConfigError
 
 
 def mock_call(libname, flag):

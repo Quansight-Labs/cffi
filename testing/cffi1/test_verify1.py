@@ -1,8 +1,8 @@
 import os, sys, math
 import pytest
-from cffi import FFI, FFIError, VerificationError, VerificationMissing, model
-from cffi import CDefError
-from cffi import recompiler
+from cffi_ft import FFI, FFIError, VerificationError, VerificationMissing, model
+from cffi_ft import CDefError
+from cffi_ft import recompiler
 from testing.support import *
 from testing.support import _verify, extra_compile_args, is_musl
 import _cffi_ft_backend as _cffi_backend
@@ -1563,10 +1563,10 @@ def test_callback_in_thread():
     if sys.platform == 'win32':
         pytest.skip("pthread only")
     import os, subprocess
-    from cffi import _imp_emulation as imp
+    from cffi_ft import _imp_emulation as imp
     arg = os.path.join(os.path.dirname(__file__), 'callback_in_thread.py')
     g = subprocess.Popen([sys.executable, arg,
-                          os.path.dirname(imp.find_module('cffi')[1])])
+                          os.path.dirname(imp.find_module('cffi_ft')[1])])
     result = g.wait()
     assert result == 0
 
@@ -2180,7 +2180,7 @@ def test_verify_extra_arguments():
     assert lib.ABA == 42
 
 def test_implicit_unicode_on_windows():
-    from cffi import FFIError
+    from cffi_ft import FFIError
     if sys.platform != 'win32':
         pytest.skip("win32-only test")
     ffi = FFI()

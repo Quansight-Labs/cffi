@@ -1,5 +1,5 @@
 import sys, os
-from cffi._imp_emulation import load_dynamic
+from cffi_ft._imp_emulation import load_dynamic
 
 if sys.version_info < (3,):
     __all__ = ['u', 'arraytostring', 'load_dynamic']
@@ -73,7 +73,7 @@ class FdWriteCapture(object):
         return self._value
 
 def _verify(ffi, module_name, preamble, *args, **kwds):
-    from cffi.recompiler import recompile
+    from cffi_ft.recompiler import recompile
     from .udir import udir
     assert module_name not in sys.modules, "module name conflict: %r" % (
         module_name,)

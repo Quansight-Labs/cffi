@@ -7,24 +7,22 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cffi"
+name = "cffi-ft"
 version = "1.18.0.dev0"
 dependencies = [
     "pycparser; implementation_name != 'PyPy'",
 ]
-requires-python = ">=3.8"
+# use CFFI upstream for older Python versions or on PyPy
+requires-python = ">=3.13"
 
 description = "Foreign Function Interface for Python calling C code."
 readme = {file = "README.md", content-type = "text/markdown"}
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: Free Threading :: 2 - Beta",
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
     "License :: OSI Approved :: MIT License",
@@ -39,12 +37,12 @@ maintainers = [
 ]
 
 [project.entry-points."distutils.setup_keywords"]
-cffi_modules = "cffi.setuptools_ext:cffi_modules"
+cffi_ft_modules = "cffi_ft.setuptools_ext:cffi_ft_modules"
 
 [project.urls]
 Documentation = "https://cffi.readthedocs.io/"
 Changelog = "https://cffi.readthedocs.io/en/latest/whatsnew.html"
-Downloads = "https://github.com/python-cffi/cffi/releases"
+Downloads = "https://github.com/Quansight-Labs/cffi-ft/releases"
 Contact = "https://groups.google.com/forum/#!forum/python-cffi"
-"Source Code" = "https://github.com/python-cffi/cffi"
-"Issue Tracker" = "https://github.com/python-cffi/cffi/issues"
+"Source Code" = "https://github.com/Quansight-Labs/cffi-ft"
+"Issue Tracker" = "https://github.com/Quansight-Labs/cffi-ft/issues"

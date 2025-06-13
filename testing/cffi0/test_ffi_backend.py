@@ -2,7 +2,7 @@ import sys, platform
 import pytest
 from testing.cffi0 import backend_tests, test_function, test_ownlib
 from testing.support import u
-from cffi import FFI
+from cffi_ft import FFI
 import _cffi_ft_backend as _cffi_backend
 
 

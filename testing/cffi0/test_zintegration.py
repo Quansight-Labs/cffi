@@ -48,10 +48,10 @@ def create_venv(name):
     paths = ""
     if site_packages:
         try:
-            from cffi import _pycparser
-            modules = ('cffi', '_cffi_ft_backend')
+            from cffi_ft import _pycparser
+            modules = ('cffi_ft', '_cffi_ft_backend')
         except ImportError:
-            modules = ('cffi', '_cffi_ft_backend', 'pycparser')
+            modules = ('cffi_ft', '_cffi_ft_backend', 'pycparser')
             try:
                 import ply
             except ImportError:
@@ -175,7 +175,7 @@ class TestZIntegration(object):
         ''')
 
     def test_set_py_limited_api(self):
-        from cffi.setuptools_ext import _set_py_limited_api
+        from cffi_ft.setuptools_ext import _set_py_limited_api
         try:
             import setuptools
         except ImportError as e:

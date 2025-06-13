@@ -42,7 +42,7 @@ Create the file ``piapprox_build.py``:
 
 .. code-block:: python
 
-      from cffi import FFI
+      from cffi_ft import FFI
       ffibuilder = FFI()
 
       # cdef() expects a single string declaring the C types, functions and
@@ -97,7 +97,7 @@ an example using the Setuptools distribution:
     setup(
         ...
         setup_requires=["cffi>=1.0.0"],
-        cffi_modules=["piapprox_build:ffibuilder"], # "filename:global"
+        cffi_ft_modules=["piapprox_build:ffibuilder"], # "filename:global"
         install_requires=["cffi>=1.0.0"],
     )
 
@@ -127,7 +127,7 @@ May look familiar to those who have used ctypes_.
 
 .. code-block:: python
 
-    >>> from cffi import FFI
+    >>> from cffi_ft import FFI
     >>> ffi = FFI()
     >>> ffi.cdef("""
     ...     int printf(const char *format, ...);   // copy-pasted from the man page
@@ -162,7 +162,7 @@ Struct/Array Example (minimal, in-line)
 
 .. code-block:: python
 
-    from cffi import FFI
+    from cffi_ft import FFI
     ffi = FFI()
     ffi.cdef("""
         typedef struct {
@@ -213,7 +213,7 @@ API Mode, calling the C standard library
     # example, but call the result 'ffibuilder' now instead of 'ffi';
     # this is to avoid confusion with the other 'ffi' object you get below
 
-    from cffi import FFI
+    from cffi_ft import FFI
     ffibuilder = FFI()
 
     ffibuilder.set_source("_example",
@@ -285,7 +285,7 @@ To integrate it inside a ``setup.py`` distribution with Setuptools:
     setup(
         ...
         setup_requires=["cffi>=1.0.0"],
-        cffi_modules=["example_build.py:ffibuilder"],
+        cffi_ft_modules=["example_build.py:ffibuilder"],
         install_requires=["cffi>=1.0.0"],
     )
 
@@ -333,7 +333,7 @@ the C extension:
 
    .. code-block:: python
 
-      from cffi import FFI
+      from cffi_ft import FFI
       ffibuilder = FFI()
 
       ffibuilder.cdef("float pi_approx(int n);")
@@ -384,7 +384,7 @@ directly in the build script:
 
     # file "example_build.py"
 
-    from cffi import FFI
+    from cffi_ft import FFI
     ffibuilder = FFI()
 
     ffibuilder.cdef("int foo(int *, int *, int);")
@@ -440,7 +440,7 @@ based on the version of libraries detected on the system).
 
     # file "simple_example_build.py"
 
-    from cffi import FFI
+    from cffi_ft import FFI
 
     ffibuilder = FFI()
     # Note that the actual source is None
@@ -487,7 +487,7 @@ you can say in the ``setup.py``:
     setup(
         ...
         setup_requires=["cffi>=1.0.0"],
-        cffi_modules=["simple_example_build.py:ffibuilder"],
+        cffi_ft_modules=["simple_example_build.py:ffibuilder"],
         install_requires=["cffi>=1.0.0"],
     )
 
@@ -519,7 +519,7 @@ which can be used from a C application.
 
 .. code-block:: python
 
-    import cffi
+    import cffi_ft as cffi
     ffibuilder = cffi.FFI()
 
     ffibuilder.embedding_api("""
